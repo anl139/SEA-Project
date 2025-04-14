@@ -1,31 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
+    <meta charset="UTF-8" />
+    <title>Stocks Catalog | Home</title>
+    <meta name="description" content="A Catalog of Popular Stocks" />
     <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="scripts.js"></script>
+    <!-- The script is deferred to ensure the DOM is loaded first -->
+    <script type="text/javascript" src="scripts.js" defer></script>
   </head>
-
   <body>
     <header class="main-header">
-      <h1 class="title">LA TV Shows</h1>
+      <h1 class="title">Stocks Catalog</h1>
     </header>
+
+    <!-- Controls for interacting with the catalog -->
+    <div id="controls">
+      <input type="text" id="search-input" placeholder="Search by ticker or name..." />
+      <button id="sort-btn" onclick="sortCatalogByPrice()">Sort by Price</button>
+      <button id="add-btn" onclick="addNewStock()">Add A Stock</button>
+      <button id="remove-btn" onclick="removeLastStock()">Remove Last Stock</button>
+    </div>
+
+    <!-- Container for displaying stock cards -->
     <div id="card-container"></div>
-    <div class="card" style="display: none">
+
+    <!-- Template Card (hidden by default) -->
+    <div class="card" style="display: none;">
       <div class="card-content">
-        <h2>TV Show Title</h2>
-        <img src="" alt="TV Show Poster" />
-        <ul>
-          <li>Bullet Point 1</li>
-          <li>Bullet Point 2</li>
-          <li>Bullet Point 3</li>
-        </ul>
+        <h2>Stock Name</h2>
+        <p class="ticker">Ticker: ---</p>
+        <p class="price">Price: $0.00</p>
+        <p class="change">Change: 0.00%</p>
+        <p class="market-cap">Market Cap: $0B</p>
       </div>
     </div>
-    <div class="footer">
+
+    <footer class="footer">
       <button onclick="quoteAlert();">Get A Quote!</button>
-      <button onclick="removeLastCard();">Remove A Card!</button>
-    </div>
+    </footer>
   </body>
 </html>

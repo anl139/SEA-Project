@@ -23,75 +23,204 @@
  *
  */
 
-const FRESH_PRINCE_URL =
-  "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-const CURB_POSTER_URL =
-  "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-const EAST_LOS_HIGH_POSTER_URL =
-  "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
+/**
+ * Stocks Catalog Project
+ *
+ * This script manages a dataset of stock objects and provides functionality to:
+ * - Display stock information as cards.
+ * - Search stocks by ticker or name.
+ * - Sort stocks by price.
+ * - Add a new stock.
+ * - Remove the last stock.
+ */
 
-// This is an array of strings (TV show titles)
-let titles = [
-  "Fresh Prince of Bel Air",
-  "Curb Your Enthusiasm",
-  "East Los High",
+// Example dataset: Array of stock objects
+let stocksCatalog = [
+  {
+    id: 1,
+    name: "Apple Inc.",
+    ticker: "AAPL",
+    price: 175.64,
+    change: 1.2,
+    marketCap: "2.9T"
+  },
+  {
+    id: 2,
+    name: "Alphabet Inc.",
+    ticker: "GOOGL",
+    price: 105.24,
+    change: -0.5,
+    marketCap: "1.5T"
+  },
+  {
+    id: 3,
+    name: "Amazon.com Inc.",
+    ticker: "AMZN",
+    price: 135.88,
+    change: 0.8,
+    marketCap: "1.7T"
+  },
+  {
+    id: 4,
+    name: "Microsoft Corporation",
+    ticker: "MSFT",
+    price: 315.42,
+    change: 0.3,
+    marketCap: "2.3T"
+  },
+  {
+    id: 5,
+    name: "Tesla Inc.",
+    ticker: "TSLA",
+    price: 900.15,
+    change: -1.7,
+    marketCap: "900B"
+  }
 ];
-// Your final submission should have much more data than this, and
-// you should use more than just an array of strings to store it all.
 
-// This function adds cards the page to display the data in the array
-function showCards() {
+// This variable holds the currently displayed stocks (filtered, sorted, etc.)
+let currentView = [...stocksCatalog];
+
+// Sorting toggle: true for ascending, false for descending price sorting
+let ascending = true;
+
+/**
+ * Render cards based on a provided list of stock objects.
+ */
+function renderCards(stocks) {
   const cardContainer = document.getElementById("card-container");
-  cardContainer.innerHTML = "";
+  cardContainer.innerHTML = ""; // Clear current cards
+
+  // Get the hidden template card from the DOM
   const templateCard = document.querySelector(".card");
 
-  for (let i = 0; i < titles.length; i++) {
-    let title = titles[i];
+  if (stocks.length === 0) {
+    cardContainer.innerHTML = "<p>No stocks found.</p>";
+    return;
+  }
 
-    // This part of the code doesn't scale very well! After you add your
-    // own data, you'll need to do something totally different here.
-    let imageURL = "";
-    if (i == 0) {
-      imageURL = FRESH_PRINCE_URL;
-    } else if (i == 1) {
-      imageURL = CURB_POSTER_URL;
-    } else if (i == 2) {
-      imageURL = EAST_LOS_HIGH_POSTER_URL;
-    }
+  stocks.forEach(stock => {
+    const nextCard = templateCard.cloneNode(true);
+    editCardContent(nextCard, stock);
+    cardContainer.appendChild(nextCard);
+  });
+}
 
-    const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, title, imageURL); // Edit title and image
-    cardContainer.appendChild(nextCard); // Add new card to the container
+/**
+ * Update card content based on a stock object.
+ */
+function editCardContent(card, stock) {
+  card.style.display = "block";
+
+  // Update the stock name in the card header (h2)
+  const cardHeader = card.querySelector("h2");
+  cardHeader.textContent = stock.name;
+
+  // Update stock details with ticker, price, change and market cap
+  const tickerPara = card.querySelector(".ticker");
+  if (tickerPara) {
+    tickerPara.textContent = `Ticker: ${stock.ticker}`;
+  }
+
+  const pricePara = card.querySelector(".price");
+  if (pricePara) {
+    pricePara.textContent = `Price: $${stock.price.toFixed(2)}`;
+  }
+
+  const changePara = card.querySelector(".change");
+  if (changePara) {
+    changePara.textContent = `Change: ${stock.change.toFixed(2)}%`;
+  }
+
+  const marketCapPara = card.querySelector(".market-cap");
+  if (marketCapPara) {
+    marketCapPara.textContent = `Market Cap: $${stock.marketCap}`;
   }
 }
 
-function editCardContent(card, newTitle, newImageURL) {
-  card.style.display = "block";
+/**
+ * Search the stocks catalog based on user input.
+ */
+function searchCatalog() {
+  const searchTerm = document.getElementById("search-input").value.toLowerCase();
 
-  const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = newTitle;
-
-  const cardImage = card.querySelector("img");
-  cardImage.src = newImageURL;
-  cardImage.alt = newTitle + " Poster";
-
-  // You can use console.log to help you debug!
-  // View the output by right clicking on your website,
-  // select "Inspect", then click on the "Console" tab
-  console.log("new card:", newTitle, "- html: ", card);
-}
-
-// This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
-
-function quoteAlert() {
-  console.log("Button Clicked!");
-  alert(
-    "I guess I can kiss heaven goodbye, because it got to be a sin to look this good!"
+  currentCatalogView = stocksCatalog.filter(stock =>
+    stock.name.toLowerCase().includes(searchTerm) || stock.ticker.toLowerCase().includes(searchTerm)
   );
+
+  renderCards(currentCatalogView);
 }
 
-function removeLastCard() {
-  titles.pop(); // Remove last item in titles array
-  showCards(); // Call showCards again to refresh
+/**
+ * Sort the stocks catalog by price, toggling between ascending and descending order.
+ */
+function sortCatalogByPrice() {
+  stocksCatalog.sort((a, b) => ascending ? a.price - b.price : b.price - a.price);
+  ascending = !ascending; // Toggle order for subsequent clicks
+
+  // Update sort button text accordingly
+  const sortBtn = document.getElementById("sort-btn");
+  sortBtn.textContent = ascending ? "Sort by Price (Asc)" : "Sort by Price (Desc)";
+  
+  renderCards(stocksCatalog);
 }
+
+/**
+ * Remove the last stock from the catalog.
+ */
+function removeLastStock() {
+  stocksCatalog.pop();
+  currentCatalogView = [...stocksCatalog];
+  renderCards(currentCatalogView);
+}
+
+/**
+ * Add a new stock to the catalog.
+ * In a real application, data might be collected from a form.
+ */
+function addNewStock() {
+  const name = prompt("Enter the name of the stock:");
+  if (!name) return alert("Stock name is required!");
+
+  const ticker = prompt("Enter the ticker symbol (e.g., AAPL):");
+  if (!ticker) return alert("Ticker symbol is required!");
+
+  const price = parseFloat(prompt("Enter the current price:"));
+  if (isNaN(price)) return alert("Invalid price. Please enter a number.");
+
+  const change = parseFloat(prompt("Enter the daily change percentage:"));
+  if (isNaN(change)) return alert("Invalid change percentage.");
+
+  const marketCap = prompt("Enter the market cap (e.g., 1.5T or 500B):");
+  if (!marketCap) return alert("Market cap is required!");
+
+  const newStock = {
+    id: stocksCatalog.length + 1,
+    name: name.trim(),
+    ticker: ticker.trim().toUpperCase(),
+    price: price,
+    change: change,
+    marketCap: marketCap.trim().toUpperCase()
+  };
+
+  stocksCatalog.push(newStock);
+  currentCatalogView = [...stocksCatalog];
+  renderCards(currentCatalogView);
+}
+
+/**
+ * Display an alert with a fun stock-themed quote.
+ */
+function quoteAlert() {
+  alert("Invest in yourself—the dividends are priceless!");
+}
+
+/**
+ * Initialization: Render the initial stock cards and wire up event listeners.
+ */
+document.addEventListener("DOMContentLoaded", () => {
+  renderCards(stocksCatalog);
+
+  // Listen for input changes in the search field.
+  document.getElementById("search-input").addEventListener("input", searchCatalog);
+});

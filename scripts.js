@@ -84,9 +84,16 @@ let currentView = [...stocksCatalog];
 // Sorting toggle: true for ascending, false for descending price sorting
 let ascending = true;
 
+
 /**
  * Render cards based on a provided list of stock objects.
  */
+function convertNumber(val){
+  if (val.endsWith("T")) return parseFloat(val) * 1e12;
+  if (val.endsWith("B")) return parseFloat(val) * 1e9;
+  if (val.endsWith("M")) return parseFloat(val) * 1e6;
+  return parseFloat(val);
+}
 function renderCards(stocks) {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = ""; // Clear current cards
@@ -154,15 +161,25 @@ function searchCatalog() {
 /**
  * Sort the stocks catalog by price, toggling between ascending and descending order.
  */
-function sortCatalogByPrice() {
-  stocksCatalog.sort((a, b) => ascending ? a.price - b.price : b.price - a.price);
-  ascending = !ascending; // Toggle order for subsequent clicks
-
-  // Update sort button text accordingly
-  const sortBtn = document.getElementById("sort-btn");
-  sortBtn.textContent = ascending ? "Sort by Price (Asc)" : "Sort by Price (Desc)";
-  
-  renderCards(stocksCatalog);
+function handleSortStock(){
+  const choice = document.getElementById("sort-select").value;
+  switch(choice){
+    case "alphabetical":
+      currentView.sort((a,b ) => a.name.localeCompare(b.name));
+      break;
+    case "price":
+      currentView.sort((a,b) => b.price - a.price);
+      break;
+    case "change":
+      currentView.sort((a,b) => b.change - a.change);
+      break;
+    case "marketCap":
+      currentView.sort((a,b) =>convertNumber(b.marketCap) - convertNumber(a.marketCap));
+      break;
+    default:
+    return;
+  }
+  renderCards(currentView);
 }
 
 /**

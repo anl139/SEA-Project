@@ -16,7 +16,13 @@
     <!-- Controls for interacting with the catalog -->
     <div id="controls">
       <input type="text" id="search-input" placeholder="Search by ticker or name..." />
-      <button id="sort-btn" onclick="sortCatalogByPrice()">Sort by Price</button>
+      <select id = "sort-select" onchange = "handleSortStock();">
+        <option value = "">Sort by</option>
+        <option value = "alphabetical">Alphabetical(A -> Z)</option>
+        <option value = "price">Price(High to low) </option> 
+        <option value = "change"> Change %(High to low)</option> 
+        <option value = "marketCap"> Market Cap(High to Low)</option>
+      </select>
       <button id="add-btn" onclick="addNewStock()">Add A Stock</button>
       <button id="remove-btn" onclick="removeLastStock()">Remove Last Stock</button>
     </div>

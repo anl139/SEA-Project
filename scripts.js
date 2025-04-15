@@ -320,18 +320,27 @@ function searchCatalog() {
  */
 function handleSortStock(){
   const choice = document.getElementById("sort-select").value;
+  const direction = document.getElementById("sort-direction").value;
+  const ascending = direction === "asc";
+
   switch(choice){
     case "alphabetical":
-      currentView.sort((a,b ) => a.name.localeCompare(b.name));
+      currentView.sort((a, b) => 
+        ascending ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name));
       break;
+
     case "price":
-      currentView.sort((a,b) => b.currentPrice - a.currentPrice);
+      currentView.sort((a, b) => 
+        ascending ? a.currentPrice - b.currentPrice : b.currentPrice - a.currentPrice);
       break;
+
     case "change":
-      currentView.sort((a,b) => b.change - a.change);
+      currentView.sort((a, b) => 
+        ascending ? a.change - b.change : b.change - a.change);
       break;
+
     default:
-    return;
+      return;
   }
   renderCards(currentView);
 }

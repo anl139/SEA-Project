@@ -22,6 +22,10 @@
         <option value = "price">Price(High to low) </option> 
         <option value = "change"> Change %(High to low)</option> 
       </select>
+      <select id="sort-direction" onchange="handleSortStock()">
+        <option value="desc">Descending</option>
+        <option value="asc">Ascending</option>
+      </select>
       <button id="add-btn" onclick="addNewStock()">Add A Stock</button>
       <button id="remove-btn" onclick="removeLastStock()">Remove Last Stock</button>
     </div>

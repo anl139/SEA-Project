@@ -223,12 +223,9 @@ const uiStocksCatalog = stocksCatalog.map((stock, index) => {
     ticker: stock.symbol,
     description: stock.description,
     currentPrice: stock.initial_price,
-    // Simulated extra price points:
-    price2020: stock.price_2007 * 1.01, // slight increase from price_2007
-    price2015: stock.price_2002 * 0.99, // slight decrease from price_2002
-    // Optionally, you can calculate a daily change for display; here we use a dummy 0 value.
-    change: 0,
-    marketCap: "N/A" // Update as needed if market cap data becomes available
+    price2020: stock.price_2007 * 1.5, //couldnt find one with relevant year so multply to represent inflation
+    price2015: stock.price_2002 * 1.2, 
+    change: ((stock.price_2007*1.5 - stock.price_2002*1.2)/(stock.price_2002*1.2)) * 100
   };
 });
 
@@ -243,12 +240,7 @@ let ascending = true;
 /**
  * Render cards based on a provided list of stock objects.
  */
-function convertNumber(val){
-  if (val.endsWith("T")) return parseFloat(val) * 1e12;
-  if (val.endsWith("B")) return parseFloat(val) * 1e9;
-  if (val.endsWith("M")) return parseFloat(val) * 1e6;
-  return parseFloat(val);
-}
+
 function renderCards(stocks) {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = ""; // Clear current cards
@@ -299,11 +291,6 @@ function editCardContent(card, stock) {
   if (changePara) {
     changePara.textContent = `Change: ${stock.change.toFixed(2)}%`;
   }
-
-  const marketCapPara = card.querySelector(".market-cap");
-  if (marketCapPara) {
-    marketCapPara.textContent = `Market Cap: $${stock.marketCap}`;
-  }
 }
 function showStockDetails(stock) {
   const details = `
@@ -343,9 +330,6 @@ function handleSortStock(){
     case "change":
       currentView.sort((a,b) => b.change - a.change);
       break;
-    case "marketCap":
-      currentView.sort((a,b) =>convertNumber(b.marketCap) - convertNumber(a.marketCap));
-      break;
     default:
     return;
   }
@@ -370,6 +354,8 @@ function removeLastStock() {
 function addNewStock() {
   const name = prompt("Enter the name of the stock:");
   if (!name) return alert("Stock name is required!");
+  const Description = prompt("Enter the description of the stock");
+  if(!Description) return alert("Stock Description is required");
 
   const ticker = prompt("Enter the ticker symbol (e.g., AAPL):");
   if (!ticker) return alert("Ticker symbol is required!");
@@ -379,9 +365,6 @@ function addNewStock() {
 
   const change = parseFloat(prompt("Enter the daily change percentage:"));
   if (isNaN(change)) return alert("Invalid change percentage.");
-
-  const marketCap = prompt("Enter the market cap (e.g., 1.5T or 500B):");
-  if (!marketCap) return alert("Market cap is required!");
 
   // For demonstration, we ask for additional prices for 2020 and 2015.
   const price2020 = parseFloat(prompt("Enter the price in 2020:"));
@@ -394,12 +377,11 @@ function addNewStock() {
     id: uiStocksCatalog.length + 1,
     name: name.trim(),
     ticker: ticker.trim().toUpperCase(),
-    description: "No description available.", // or prompt for a description
+    description: Description.trim(), // or prompt for a description
     currentPrice: price,
     price2020: price2020,
     price2015: price2015,
-    change: change,
-    marketCap: marketCap.trim().toUpperCase()
+    change: (price2020 - price2015) / price2015,
   };
 
   uiStocksCatalog.push(newStock);

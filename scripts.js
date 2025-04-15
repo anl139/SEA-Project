@@ -308,11 +308,11 @@ Price in 2015: $${stock.price2015.toFixed(2)}
 function searchCatalog() {
   const searchTerm = document.getElementById("search-input").value.toLowerCase();
 
-  currentCatalogView = stocksCatalog.filter(stock =>
+  currentView = uiStocksCatalog.filter(stock =>
     stock.name.toLowerCase().includes(searchTerm) || stock.ticker.toLowerCase().includes(searchTerm)
   );
 
-  renderCards(currentCatalogView);
+  renderCards(currentView);
 }
 
 /**

@@ -215,7 +215,7 @@ let stocksCatalog = [
       "symbol": "XRX"
   }
 ];
-
+//turn to map to make it easier to search
 const uiStocksCatalog = stocksCatalog.map((stock, index) => {
   return {
     id: index + 1,
@@ -304,6 +304,7 @@ Price in 2015: $${stock.price2015.toFixed(2)}
 }
 /**
  * Search the stocks catalog based on user input.
+ * *sort the stocks
  */
 function searchCatalog() {
   const searchTerm = document.getElementById("search-input").value.toLowerCase();
@@ -311,8 +312,8 @@ function searchCatalog() {
   currentView = uiStocksCatalog.filter(stock =>
     stock.name.toLowerCase().includes(searchTerm) || stock.ticker.toLowerCase().includes(searchTerm)
   );
-
-  renderCards(currentView);
+  
+  handleSortStock();
 }
 
 /**
@@ -340,6 +341,7 @@ function handleSortStock(){
       break;
 
     default:
+      renderCards(currentView);
       return;
   }
   renderCards(currentView);
@@ -347,11 +349,12 @@ function handleSortStock(){
 
 /**
  * Remove the last stock from the catalog.
+ * shallow copy to esnure itStocksCatalog is only affected by pop
  */
+
 function removeLastStock() {
   uiStocksCatalog.pop();
-  const currentCatalogView = [...uiStocksCatalog];
-  currentView = [...currentCatalogView];
+  currentView = [...uiStocksCatalog];
   renderCards(currentView);
 }
 
@@ -386,7 +389,7 @@ function addNewStock() {
     id: uiStocksCatalog.length + 1,
     name: name.trim(),
     ticker: ticker.trim().toUpperCase(),
-    description: Description.trim(), // or prompt for a description
+    description: Description.trim(), 
     currentPrice: price,
     price2020: price2020,
     price2015: price2015,

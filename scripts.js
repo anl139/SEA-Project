@@ -189,7 +189,7 @@ let stocksCatalog = [
       "price_2002": 15.58,
       "price_2007": 36.54,
       "symbol": "TXN",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JxYBMuc4_Xtg4EYvIovHJ5pxhXY1_pYJeQ&s"
+      "image": "images\images.png"
   },
   {
       "company": "Time Warner",

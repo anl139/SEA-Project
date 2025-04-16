@@ -293,15 +293,37 @@ function editCardContent(card, stock) {
   }
 }
 function showStockDetails(stock) {
-  const details = `
-${stock.name} (${stock.ticker})
-Description: ${stock.description}
-Current Price: $${stock.currentPrice.toFixed(2)}
-Price in 2020: $${stock.price2020.toFixed(2)}
-Price in 2015: $${stock.price2015.toFixed(2)}
-`;
-  alert(details);
+  const modal = document.getElementById("stock-modal");
+  const title = document.getElementById("modal-title");
+  const ticker = document.getElementById("modal-ticker");
+  const description = document.getElementById("modal-description");
+  const currentPrice = document.getElementById("modal-currentPrice");
+  const price2020 = document.getElementById("modal-price2020");
+  const price2015 = document.getElementById("modal-price2015");
+  const change = document.getElementById("modal-change");
+
+  title.textContent = stock.name;
+  ticker.textContent = stock.ticker;
+  description.textContent = stock.description;
+  currentPrice.textContent = stock.currentPrice.toFixed(2);
+  price2020.textContent = stock.price2020.toFixed(2);
+  price2015.textContent = stock.price2015.toFixed(2);
+  change.textContent = stock.change.toFixed(2);
+
+  modal.style.display = "block";
 }
+
+// Add close functionality
+document.querySelector(".close").addEventListener("click", () => {
+  document.getElementById("stock-modal").style.display = "none";
+});
+
+window.onclick = function(event) {
+  const modal = document.getElementById("stock-modal");
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+};
 /**
  * Search the stocks catalog based on user input.
  * *sort the stocks
@@ -393,7 +415,7 @@ function addNewStock() {
     currentPrice: price,
     price2020: price2020,
     price2015: price2015,
-    change: (price2020 - price2015) / price2015,
+    change: ((price2020 - price2015) / price2015) * 100,
   };
 
   uiStocksCatalog.push(newStock);

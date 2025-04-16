@@ -189,7 +189,7 @@ let stocksCatalog = [
       "price_2002": 15.58,
       "price_2007": 36.54,
       "symbol": "TXN",
-      "image": "images\images.png"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JxYBMuc4_Xtg4EYvIovHJ5pxhXY1_pYJeQ&s"
   },
   {
       "company": "Time Warner",
@@ -415,6 +415,7 @@ function removeLastStock() {
 function addNewStock() {
   const name = prompt("Enter the name of the stock:");
   if (!name) return alert("Stock name is required!");
+  const image = prompt("Enter an Image of your stock")
   const Description = prompt("Enter the description of the stock");
   if(!Description) return alert("Stock Description is required");
 
@@ -443,6 +444,7 @@ function addNewStock() {
     price2020: price2020,
     price2015: price2015,
     change: ((price2020 - price2015) / price2015) * 100,
+    image: image
   };
 
   uiStocksCatalog.push(newStock);

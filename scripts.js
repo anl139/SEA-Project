@@ -44,7 +44,8 @@ let stocksCatalog = [
       "initial_price": 44.28,
       "price_2002": 56.27,
       "price_2007": 95.85,
-      "symbol": "MMM"
+      "symbol": "MMM",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/3M_wordmark.svg/1200px-3M_wordmark.svg.png"
   },
   {
       "company": "Amazon.com",
@@ -53,6 +54,7 @@ let stocksCatalog = [
       "price_2002": 17.01,
       "price_2007": 93.43,
       "symbol": "AMZN"
+      ,"image": "https://1000logos.net/wp-content/uploads/2016/10/Amazon-Logo-2000.png"
   },
   {
       "company": "Campbell Soup",
@@ -60,7 +62,8 @@ let stocksCatalog = [
       "initial_price": 37.0,
       "price_2002": 22.27,
       "price_2007": 36.4,
-      "symbol": "CPB"
+      "symbol": "CPB",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Campbell_Soup_Company_logo.svg/2560px-Campbell_Soup_Company_logo.svg.png"
   },
   {
       "company": "Disney",
@@ -68,7 +71,8 @@ let stocksCatalog = [
       "initial_price": 40.68,
       "price_2002": 15.24,
       "price_2007": 35.47,
-      "symbol": "DIS"
+      "symbol": "DIS",
+      "image": "https://images.seeklogo.com/logo-png/4/2/disney-logo-png_seeklogo-41972.png"
   },
   {
       "company": "Dow Chemical",
@@ -76,7 +80,8 @@ let stocksCatalog = [
       "initial_price": 38.83,
       "price_2002": 27.65,
       "price_2007": 44.67,
-      "symbol": "DOW"
+      "symbol": "DOW",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Dow_Chemical_Company_logo.svg/1200px-Dow_Chemical_Company_logo.svg.png"
   },
   {
       "company": "Exxon Mobil",
@@ -84,7 +89,8 @@ let stocksCatalog = [
       "initial_price": 39.0,
       "price_2002": 32.82,
       "price_2007": 91.36,
-      "symbol": "XOM"
+      "symbol": "XOM",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWl6ZIc20PPXRFXMErbO9zLghD8XU7-vrtww&s"
   },
   {
       "company": "Ford",
@@ -92,7 +98,8 @@ let stocksCatalog = [
       "initial_price": 27.34,
       "price_2002": 9.63,
       "price_2007": 8.37,
-      "symbol": "F"
+      "symbol": "F",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg"
   },
   {
       "company": "The Gap",
@@ -100,7 +107,8 @@ let stocksCatalog = [
       "initial_price": 46.0,
       "price_2002": 11.56,
       "price_2007": 18.9,
-      "symbol": "GPS"
+      "symbol": "GPS",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Gap_logo.svg/2048px-Gap_logo.svg.png"
   },
   {
       "company": "General Mills",
@@ -108,7 +116,8 @@ let stocksCatalog = [
       "initial_price": 15.59,
       "price_2002": 22.1,
       "price_2007": 28.76,
-      "symbol": "GIS"
+      "symbol": "GIS",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYraq2BuMwsc1-vZb0CwwbEylnJKNB5Q9bvQ&s"
   },
   {
       "company": "Hewlett Packard",
@@ -116,7 +125,8 @@ let stocksCatalog = [
       "initial_price": 66.28,
       "price_2002": 12.03,
       "price_2007": 50.9,
-      "symbol": "HPQ"
+      "symbol": "HPQ",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/1200px-HP_logo_2012.svg.png"
   },
   {
       "company": "IBM",
@@ -124,7 +134,8 @@ let stocksCatalog = [
       "initial_price": 118.37,
       "price_2002": 60.36,
       "price_2007": 116.3,
-      "symbol": "IBM"
+      "symbol": "IBM",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCfbD_cFA2zWYyY4Y4ewOkBuqAcGEqfN2H8g&s"
   },
   {
       "company": "Johnson & Johnson",
@@ -132,7 +143,8 @@ let stocksCatalog = [
       "initial_price": 35.13,
       "price_2002": 52.3,
       "price_2007": 66.25,
-      "symbol": "JNJ"
+      "symbol": "JNJ",
+      "image": "https://image.cnbcfm.com/api/v1/image/107300973-1694714293835-Untitled-3.jpg?v=1712698838&w=1920&h=1080"
   },
   {
       "company": "Microsoft",
@@ -140,7 +152,8 @@ let stocksCatalog = [
       "initial_price": 55.72,
       "price_2002": 22.62,
       "price_2007": 29.84,
-      "symbol": "MSFT"
+      "symbol": "MSFT",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk1Q2lh7aweiNuE3LObL2pp_kWhtffSJckKw&s"
   },
   {
       "company": "Monsanto",
@@ -148,7 +161,8 @@ let stocksCatalog = [
       "initial_price": 11.47,
       "price_2002": 7.2,
       "price_2007": 86.93,
-      "symbol": "MO"
+      "symbol": "MO",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/Monsanto_logo.svg/1920px-Monsanto_logo.svg.png"
   },
   {
       "company": "PepsiCo",
@@ -156,7 +170,8 @@ let stocksCatalog = [
       "initial_price": 34.13,
       "price_2002": 36.69,
       "price_2007": 73.74,
-      "symbol": "PEP"
+      "symbol": "PEP",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a6/PepsiCo_logo.svg"
   },
   {
       "company": "Starbucks",
@@ -164,7 +179,8 @@ let stocksCatalog = [
       "initial_price": 6.23,
       "price_2002": 10.5,
       "price_2007": 26.84,
-      "symbol": "SBUX"
+      "symbol": "SBUX",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png"
   },
   {
       "company": "Texas Instruments",
@@ -172,7 +188,8 @@ let stocksCatalog = [
       "initial_price": 53.88,
       "price_2002": 15.58,
       "price_2007": 36.54,
-      "symbol": "TXN"
+      "symbol": "TXN",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JxYBMuc4_Xtg4EYvIovHJ5pxhXY1_pYJeQ&s"
   },
   {
       "company": "Time Warner",
@@ -180,7 +197,8 @@ let stocksCatalog = [
       "initial_price": 221.25,
       "price_2002": 36.36,
       "price_2007": 57.18,
-      "symbol": "TWX"
+      "symbol": "TWX",
+      "image": "https://cdn.worldvectorlogo.com/logos/time-warner-cable-2.svg"
   },
   {
       "company": "United Health",
@@ -188,7 +206,8 @@ let stocksCatalog = [
       "initial_price": 7.66,
       "price_2002": 21.85,
       "price_2007": 47.7,
-      "symbol": "UNH"
+      "symbol": "UNH",
+      "image": "https://1000logos.net/wp-content/uploads/2020/08/UnitedHealth-Group-Logo-1977.png"
   },
   {
       "company": "Walmart",
@@ -196,7 +215,8 @@ let stocksCatalog = [
       "initial_price": 56.5,
       "price_2002": 50.51,
       "price_2007": 47.53,
-      "symbol": "WMT"
+      "symbol": "WMT",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Walmart_logo.svg/1280px-Walmart_logo.svg.png"
   },
   {
       "company": "Whirlpool",
@@ -204,7 +224,8 @@ let stocksCatalog = [
       "initial_price": 58.25,
       "price_2002": 46.82,
       "price_2007": 94.29,
-      "symbol": "WHR"
+      "symbol": "WHR",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/9/95/Whirlpool_Corporation_Logo_%28as_of_2017%29.svg"
   },
   {
       "company": "Xerox",
@@ -212,8 +233,9 @@ let stocksCatalog = [
       "initial_price": 20.87,
       "price_2002": 5.26,
       "price_2007": 17.54,
-      "symbol": "XRX"
-  }
+      "symbol": "XRX",
+      "image": "https://azps.com/image/catalog/Manufacture%20Logos/Xerox-Logo%201.jpg"
+  },
 ];
 //turn to map to make it easier to search
 const uiStocksCatalog = stocksCatalog.map((stock, index) => {
@@ -225,7 +247,8 @@ const uiStocksCatalog = stocksCatalog.map((stock, index) => {
     currentPrice: stock.initial_price,
     price2020: stock.price_2007 * 1.5, //couldnt find one with relevant year so multply to represent inflation
     price2015: stock.price_2002 * 1.2, 
-    change: ((stock.price_2007*1.5 - stock.price_2002*1.2)/(stock.price_2002*1.2)) * 100
+    change: ((stock.price_2007*1.5 - stock.price_2002*1.2)/(stock.price_2002*1.2)) * 100,
+    image: stock.image
   };
 });
 
@@ -301,6 +324,7 @@ function showStockDetails(stock) {
   const price2020 = document.getElementById("modal-price2020");
   const price2015 = document.getElementById("modal-price2015");
   const change = document.getElementById("modal-change");
+  const image = document.getElementById("modal-image");
 
   title.textContent = stock.name;
   ticker.textContent = stock.ticker;
@@ -309,6 +333,9 @@ function showStockDetails(stock) {
   price2020.textContent = stock.price2020.toFixed(2);
   price2015.textContent = stock.price2015.toFixed(2);
   change.textContent = stock.change.toFixed(2);
+  image.src = stock.image;
+
+  image.alt = `${stock.name} logo`;
 
   modal.style.display = "block";
 }
